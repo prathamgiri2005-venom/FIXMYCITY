@@ -584,14 +584,13 @@ async def root():
 app.include_router(api)
 app.mount("/api/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 
-   app.add_middleware(
+    app.add_middleware(
        CORSMiddleware,
        allow_credentials=True,
        allow_origin_regex=r"https://.*\.vercel\.app",
        allow_methods=["*"],
        allow_headers=["*"],
    )
-
 
 @app.on_event("startup")
 async def startup():
